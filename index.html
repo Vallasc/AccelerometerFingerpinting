@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Stanford Sensor ID Experiment</title>
+</head>
+
+<body>
+<style type="text/css">
+body {
+  background: #E7D19A;
+  margin: 0;
+  padding: 0px;
+  font: small Calibri, Arial, sans-serif;
+  text-align: center;
+  color: #333333;
+}
+/* Allow IE6 to view alpha channel on PNG images */
+img {
+  height: expression(
+    this.height_ ? 
+      this.height_ : 
+      (this.height_ = this.height));
+  width: expression(
+    this.width_ ? 
+      this.width_ : 
+      (this.width_ = this.width));
+  filter: expression(
+    "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + 
+    (this.src_ ?
+      this.src_ :
+      (this.src_ = this.src, 
+       this.src = '/images/css/spacer.gif',
+       this.src_)) + 
+    "',sizingMethod='image');");
+}
+
+a:link {
+  color: #336699;
+}
+a:visited {
+  color: #336699;
+}
+a img {
+  border-width: 0;
+}
+
+.icon {
+  vertical-align: middle;
+}
+
+.bigicon {
+  float: left; margin: 0 10px;
+}
+
+button.installer {
+  vertical-align: middle;
+  font-size: large;
+}
+
+.mainlink {
+  font-size: larger; font-weight: bold;
+}
+
+#outer-wrapper { 
+}
+
+#header-wrapper {
+  margin:0;
+  padding: 0;
+  background-color: #D0A760;
+  text-align: left;
+}
+
+#header {
+  width: 360px;
+  margin: 0 auto;
+  background-color: #990000;
+  border: 1px solid #D0A760;
+  color: #ffffff;
+  padding: 0;
+  font-size: 200%;
+}
+
+h1 {
+  padding: 0;
+  margin-top: 0;
+}
+
+h1.title {
+  padding-top: 18px;
+  padding-bottom: 18px;
+  margin: 0 14px .1em;
+  line-height: 1.2em;
+  font-size: 100%;
+}
+
+h1.title a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+#header .description {
+  display: none;
+  margin: 0 14px;
+  padding: 0 0 40px;
+  line-height: 1.4em;
+  font-size: 50%;
+}
+                                                              
+.clear { 
+  clear: both;
+}
+
+#content-wrapper {
+  background: #E7D19A url(//web.archive.org/web/20131018023401im_/http://crypto.stanford.edu/images/css/bg-gradient.gif) repeat-x left top;
+}
+
+#content {
+  width: 360px;
+  margin: 0 auto;
+  padding: 0;
+  text-align: left;
+  background-color: #ffffff;
+  border: 1px solid #D0A760;
+  border-top: 0;
+  border-bottom: 0;
+}
+
+#main-wrapper {
+  margin: 7px;
+  float: left;
+  width: 290px;
+  background-color: #ffffff;
+  display: inline;       /* fix for doubling margin in IE */
+  word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
+//  overflow: hidden;      /* fix for long non-text content breaking IE sidebar float */
+}
+
+.full #main-wrapper {
+  width: 90%;
+}
+
+#sidebar-wrapper {
+  width: 250px;
+  float: right;
+  background-color: #ffffff;
+  display: inline;       /* fix for doubling margin in IE */
+  word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
+  overflow: hidden;      /* fix for long non-text content breaking IE sidebar float */
+  border: 1px solid #D0A760;
+  border-right: 0;
+  border-top: 0;
+}
+
+h2 {
+  margin: 0;
+  margin-bottom: 0.3em;
+}
+
+h3 {
+  margin: 0;
+}
+
+.main ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.main li {
+  padding: 0;
+  margin: 1em 0;
+}
+
+.publications li {
+  margin: 0;
+}
+
+ul.publications {
+  margin-bottom: 1em; 
+}
+
+.mainlogo {
+  text-align: center;
+}
+
+.logo {
+  float: right;
+  position: relative;
+  top: -70px;
+  margin-bottom: -132px;
+}
+
+.full .logo {
+  margin-bottom: 0px;  
+}
+
+.overview .title {
+  padding-top: 15px;
+}
+
+.sidebar h2 {
+  margin: 0;
+  padding: 4px 5px;
+  background-color: #E7D19A;
+  font-size: 100%;
+  color: #333333;
+}
+.sidebar h3 {
+  font-size: 100%;
+  color: #333333;
+}
+.sidebar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.sidebar li {
+  margin: 0;
+  padding: 0;
+}
+.sidebar dd {
+  margin-left: 10px;
+}
+.sidebar blockquote {
+  margin: 7px;
+}
+.sidebar {
+  color: #333333;
+  line-height:1.3em; 
+}
+.sidebar .widget { 
+}
+
+.sidebar .widget-content { 
+  margin: 5px ;
+}
+
+.project .widget {
+  margin: 5px;
+}
+
+.project .widget .widget-content {
+  margin-left: 10px;
+}
+
+.linkback {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: right;
+}
+
+/* Footer ----------------------------------------------- */
+#footer {
+  clear: both;
+  text-align: center;
+  color: #333333;
+}
+
+#footer .widget {
+  margin: 0.5em;
+  padding-top: 20px;
+  font-size: 85%;
+  line-height: 1.5em;
+  text-align: left;
+}
+</style>
+<div id="outer-wrapper">
+<span id="skiplinks" style="display:none;">
+  <a href="#main">skip to main </a> |
+  <a href="#sidebar">skip to sidebar</a>
+</span>
+
+<div id="header-wrapper">
+  <div class="header section" id="header">
+    <div id="header-inner">
+      <div class="titlewrapper">
+        <h1 class="title">Stanford Sensor ID Experiment</h1>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<div id="content">
+  <!-- <div class='logo'>
+     <img src="seclab-128.png" alt="Logo"/>
+  </div> -->
+
+<div id="crosscol-wrapper" style="text-align:center">
+  <div class="crosscol section" id="crosscol">
+    <!-- insert cross column content here -->
+  </div>
+</div>
+
+<div id="main-wrapper">
+  <div class="main section" id="main">
+    <div class="widget overview">
+      <!--      <h2 class='title'>Overview</h2>   -->
+      <div class="widget-content">
+        <div id="notice">Checking JavaScript availability...</div>
+
+<header>
+<script>
+var cntPos = 0;
+var vectPosX = new Array();
+var vectPosY = new Array();
+var vectPosZ = new Array();
+var cntNeg = 0;
+var vectNegX = new Array();
+var vectNegY = new Array();
+var vectNegZ = new Array();
+
+var vectBufIx = 0, minX = 0.0, maxX = 0.0, minY = 0.0, maxY = 0.0, minZ = 0.0, maxZ = 0.0;
+var vectBufX = new Array();
+var vectBufY = new Array();
+var vectBufZ = new Array();
+
+var alreadyComputed = false;
+var firstTime = true;
+
+var myID = '';
+
+var useCnt = 1;
+var divisor = useCnt*1.0;
+
+function getID() {
+    var cookies=document.cookie.split(";");
+    for (cIx=0; cIx<cookies.length; cIx++) {
+        var name,value;
+	name=cookies[cIx].substr(0,cookies[cIx].indexOf("="));
+        value=cookies[cIx].substr(cookies[cIx].indexOf("=")+1);
+        name=name.replace(/^\s+|\s+$/g,"");
+        if (name=='accel_devid') {
+            myID = value;
+        }
+    }
+
+    if (myID == '') {
+        myID = '' + Math.floor(Math.random()*1000000001);
+	document.cookie = 'accel_devid=' + myID;
+    }
+}
+
+var checkNotSupportedTimer = setInterval(checkNotSupported, 2000);
+
+function restart() {
+    cntPos = 0;
+    cntNeg = 0;
+    vectBufIx = 0;
+    alreadyComputed = false;
+
+    document.getElementById('cntp').value='';
+    document.getElementById('xp').value='';
+    document.getElementById('yp').value='';
+    document.getElementById('zp').value='';    
+    document.getElementById('cntn').value='';
+    document.getElementById('xn').value='';
+    document.getElementById('yn').value='';
+    document.getElementById('zn').value='';    
+
+    document.getElementById('Boz').value='';
+    document.getElementById('Szz').value='';
+
+    firstTime = true;
+    clearInterval(checkNotSupportedTimer);
+    checkNotSupportedTimer = setInterval(checkNotSupported, 2000);
+
+    return;
+}
+
+function checkNotSupported() {
+    if (firstTime) {
+        document.getElementById('notice').innerHTML = 'It appears that your device is not compatible with this experiment. Thank you anyway for participating!';
+    }
+    clearInterval(checkNotSupportedTimer);
+}
+
+function motionHandler(event) {
+    var x = event.accelerationIncludingGravity.x;
+    var y = event.accelerationIncludingGravity.y;
+    var z = event.accelerationIncludingGravity.z;
+
+    if (firstTime) {
+        getID();
+        firstTime = false;
+        document.getElementById('notice').innerHTML = '['+myID+'] Gathering data (no personal information is collected). <br/><br/> <b><big>Please leave the phone lying screen-up on a level surface (e.g. a desk) and wait...</big></b></em> Once you see a message in <font color="red"><b>red</b></font> here, follow its instructions.';
+    }
+
+    if (Math.abs(x) > 1.5 || Math.abs(y) > 1.5 || Math.abs(z)<8.5 ||
+        Math.abs(z)>10.5) {
+        vectBufIx = 0;
+        return;
+    }
+
+    if (vectBufIx == 0) {
+        minX = x; maxX = x;
+        minY = y; maxY = y;
+        minZ = z; maxZ = z;
+    } else {
+        if (x < minX) minX = x;
+        if (x > maxX) maxX = x;
+        if (y < minY) minY = y;
+        if (y > maxY) maxY = y;
+        if (z < minZ) minZ = z;
+        if (z > maxZ) maxZ = z;
+    }
+
+    if ((maxX-minX) > 0.5 || (maxY-minY) > 0.5 || (maxZ-minZ) > 0.5) {
+        vectBufIx = 0;
+        return;
+    }
+
+    vectBufX[vectBufIx] = x;
+    vectBufY[vectBufIx] = y;
+    vectBufZ[vectBufIx] = z;
+    vectBufIx++;
+
+    if (vectBufIx > 10 && vectBufIx < 200) {
+        var percent = 5*Math.floor(vectBufIx/10);
+        if (z > 3.0 && cntPos < useCnt) document.getElementById('cntp').value=percent+'%';
+        if (z < -3.0 && cntNeg < useCnt) document.getElementById('cntn').value=percent+'%';
+    }
+
+    if (vectBufIx == 200) {
+        var avgX = 0.0, avgY = 0.0, avgZ = 0.0;
+        for (var ix=0; ix<200; ix++) {
+            avgX += vectBufX[ix];
+	    avgY += vectBufY[ix];
+	    avgZ += vectBufZ[ix];
+        }
+        avgX /= 200.0; avgY /= 200.0; avgZ /= 200.0;
+        vectBufIx = 0;
+
+        if (avgZ > 5.0) {
+            vectPosX[cntPos%10] = avgX;
+            vectPosY[cntPos%10] = avgY;
+            vectPosZ[cntPos%10] = avgZ;
+	    cntPos++;
+            document.getElementById('cntp').value=cntPos;
+	    document.getElementById('xp').value=avgX;
+	    document.getElementById('yp').value=avgY;
+	    document.getElementById('zp').value=avgZ;
+	    if (cntPos >= useCnt && cntNeg < useCnt) {
+                document.getElementById('notice').innerHTML = "<font color='red'><big><b><em>Please touch the screen, then flip the phone (screen FACING DOWN) and leave it on the same flat surface for some time (less than a minute)...</em></b></big></font>";
+            }
+	} else {
+            vectNegX[cntNeg%10] = avgX;
+            vectNegY[cntNeg%10] = avgY;
+            vectNegZ[cntNeg%10] = avgZ;
+	    cntNeg++;
+	    document.getElementById('cntn').value=cntNeg;
+            document.getElementById('xn').value=avgX;
+	    document.getElementById('yn').value=avgY;
+	    document.getElementById('zn').value=avgZ;
+	    if (cntNeg >= useCnt && cntPos < useCnt) {
+                document.getElementById('notice').innerHTML = "<font color='red'><big><b><em>Please touch the screen, then flip the phone (screen FACING DOWN) and leave it on the same flat surface for some time (less than a minute)...</em></b></big></font>";
+            }
+        }
+    }
+
+    if (cntPos >= useCnt && cntNeg >= useCnt && !alreadyComputed) {
+        var apX = 0.0, apY = 0.0, apZ = 0.0;
+        for (var ixP=0; ixP<useCnt; ixP++) {
+            apX += vectPosX[(cntPos-useCnt+10+ixP)%10];
+            apY += vectPosY[(cntPos-useCnt+10+ixP)%10];
+            apZ += vectPosZ[(cntPos-useCnt+10+ixP)%10];
+        }
+        apZ/=divisor;
+        var anX = 0.0, anY = 0.0, anZ = 0.0;
+        for (var ixN=0; ixN<useCnt; ixN++) {
+            anX += vectNegX[(cntNeg-useCnt+10+ixN)%10];
+            anY += vectNegY[(cntNeg-useCnt+10+ixN)%10];
+            anZ += vectNegZ[(cntNeg-useCnt+10+ixN)%10];
+        }
+        anZ/=divisor;
+
+        var Boz = (anZ+apZ)/2.0;
+        var Szz = ((apZ-anZ)/2.0)/9.8067;
+	document.getElementById('Boz').value=Boz;
+        document.getElementById('Szz').value=Szz;
+	alreadyComputed = true;
+
+	var req = new XMLHttpRequest();
+        req.open("GET", "http://web.archive.org/web/20131018020530/http://sensor-id.com/accel/accel_log.php?Boz="+Boz+"&Szz="+Szz+"&devid="+myID, false);
+	req.send();
+        document.getElementById('notice').innerHTML = 'Data collected. <a href="http://web.archive.org/web/20131018020530/http://sensor-id.com/accel/accel_chart2.php?Boz='+Boz+'&Szz='+Szz+'">TOUCH HERE</a> to see you device identifier. Then come back to this page and generate the identifier again---it should be the same (or close!) every time.';
+    }
+}
+
+if (window.DeviceMotionEvent) {
+  window.addEventListener('devicemotion', motionHandler, true);
+  document.getElementById('notice').innerHTML = 'Set motion handler!';
+}
+window.ondevicemotion = motionHandler;
+
+</script>
+</header>
+
+<br/><br/>
+<input type="submit" value="Restart" onclick="restart()">
+<br/><br/>
+<form>
+<tt>
++: <input type="text" id="cntp" size="5">
+X: <input type="text" id="xp" size="4">
+Y: <input type="text" id="yp" size="4">
+Z: <input type="text" id="zp" size="4">
+<br/>
+-: <input type="text" id="cntn" size="5">
+X: <input type="text" id="xn" size="4">
+Y: <input type="text" id="yn" size="4">
+Z: <input type="text" id="zn" size="4">
+<br/><br/>
+<b>Boz</b>: <input type="text" id="Boz" size="8">
+<b>Szz</b>: <input type="text" id="Szz" size="8">
+</tt>
+</form>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+
+<!-- <div id='sidebar-wrapper'>
+  <div class='sidebar section' id='sidebar'>
+    <div class='widget'>
+      <h2 class='title'>Faculty</h2>
+      <div class='widget-content'>
+        <ul>
+        </ul>
+      </div>
+      <div class='clear'></div>
+    </div>
+    <div class='widget'>
+      <h2 class='title'>Ph.D. Students</h2>
+      <div class='widget-content'>
+        <ul>
+        </ul>
+      </div>
+      <div class='clear'></div>
+    </div>
+  </div>
+</div> -->
+
+<div class="clear"></div>
+</div>
+</div> <!-- end content-wrapper -->
+
+<div id="footer-wrapper">
+  <div class="footer section" id="footer">
+    <!-- insert footer content here -->
+  </div>
+</div>
+
+</div> <!-- end outer-wrapper -->
+</body>
+</html>
